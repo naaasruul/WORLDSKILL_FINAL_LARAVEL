@@ -32,12 +32,20 @@ Route::get('/register', [RegisterController::class, 'showRegister'])->name('regi
 Route::post('/register', [RegisterController::class, 'register'])->name('register-user');
 
 // handle login
-Route::post('/login', [LoginController::class, 'login'])->name('login-user');
+Route::post('/', [LoginController::class, 'login'])->name('login-user');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('/users', [UserController::class, 'showUsers']) ->name('users');
+
 Route::get('/album', [AlbumController::class, 'showAlbum']) ->name('album');
-Route::get('/manage-album', [AlbumController::class, 'showManageAlbum']) ->name('manage-album');
+Route::get('/manage-album/{album_id}', [AlbumController::class, 'manageAlbum']) ->name('manage-album');
+Route::post('/manage-album/{album_id}', [AlbumController::class, 'updateAlbum']) ->name('update-album');
+Route::post('/upload/{album_id}', [AlbumController::class, 'uploadPhoto']) ->name('upload-photo');
+
+Route::post('/album', [AlbumController::class, 'store']) ->name('add-album');
+
 Route::get('/slide', [PhotoController::class, 'showSlide']) ->name('slide');
 Route::get('/gallery', [PhotoController::class, 'showGallery']) ->name('gallery');
 

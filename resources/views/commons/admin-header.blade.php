@@ -16,11 +16,14 @@
                 <li class="nav-item">
                     <a href="{{route('users')}}" class="nav-link">Users</a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Log Out</a>
-                </li>
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <li class="nav-item">
+                        <button type="submit" class="nav-link">Log Out</button>
+                    </li>
+                </form>
             </ul>
-            Admin
+            Hi {{$user->name}}
         </div>
     </nav>
     <div class="container">

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logged In</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 </head>
 
 <body>
@@ -19,11 +21,14 @@
                 <li class="nav-item">
                     <a href="{{route('album')}}" class="nav-link">Albums</a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Log Out</a>
-                </li>
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <li class="nav-item">
+                        <button type="submit" class="nav-link">Log Out</button>
+                    </li>
+                </form>
             </ul>
-            Aiman
+            Hi {{$user->name}}
         </div>
     </nav>
     <div class="container">
